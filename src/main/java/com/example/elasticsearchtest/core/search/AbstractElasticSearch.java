@@ -10,6 +10,7 @@ import org.elasticsearch.action.index.IndexRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.support.WriteRequest;
 import org.elasticsearch.client.Client;
+import org.elasticsearch.client.IndicesAdminClient;
 import org.elasticsearch.cluster.metadata.MappingMetaData;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.search.SearchHit;
@@ -57,7 +58,8 @@ public abstract class AbstractElasticSearch {
 	}
 
 	public boolean indexExists(String indexName){
-		return getClient().admin().indices().exists(new IndicesExistsRequest(indexName)).actionGet().isExists();
+		IndicesAdminClient indices = getClient().admin().indices();
+		return indices.exists(new IndicesExistsRequest(indexName)).actionGet().isExists();
 	}
 
 	public String getMapping(){

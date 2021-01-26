@@ -9,10 +9,12 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class OrganizationSearcher extends AbstractElasticSearch {
+	private final static String INDEX_TYPE = "enterprise";
+
 	@Override
 	public String getIndexType() {
 		if (indexExists()){
-			return "organization";
+			return INDEX_TYPE;
 		}
 		throw new RuntimeException("OrganizationSearcher cannot findout any indexs..");
 	}

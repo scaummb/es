@@ -2,10 +2,7 @@ package com.example.elasticsearchtest.core.controller;
 
 import com.example.elasticsearchtest.core.org.service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -24,7 +21,7 @@ public class EsController {
 
 	@RequestMapping("/mapping")
 	@ResponseBody
-	public String getMapping(@RequestBody String indexName){
+	public String getMapping(@RequestParam String indexName){
 		return organizationService.getMapping(indexName);
 	}
 }
